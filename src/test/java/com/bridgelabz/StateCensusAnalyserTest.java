@@ -13,9 +13,9 @@ public class StateCensusAnalyserTest {
     private static final String STATE_CODE_CSV_WITH_WRONG_DELIMITER = "C:\\Users\\hp\\IdeaProjects\\IndiaCensus\\src\\test\\resources\\IndiaStateCode - IndiaStateCode.csv";
     private Assertions Assert;
 
-    /**
-     * this test case checking given csv file should have correct records or not in it..
-     */
+
+    // this test case checking given csv file should have correct records or not in it..
+
     @Test
     public void givenIndianCensusCSVFileReturnsCorrectRecords() {
         try {
@@ -26,9 +26,9 @@ public class StateCensusAnalyserTest {
             e.printStackTrace();
         }
     }
-    /**
-     * test case is use to when given wrong csv file return custom exception...
-     1.2*/
+
+//     * test case is use to when given wrong csv file return custom exception...
+//     1.2
     @Test
     public void givenIndiaCensusData_WithWrongFile_ShouldThrowException() {
         try {
@@ -41,9 +41,9 @@ public class StateCensusAnalyserTest {
         }
     }
 
-    /**
-     * file is correct but type is incorrect then thrown exception
-     1.3 */
+
+//      file is correct but type is incorrect then thrown exception
+//     1.3
     @Test
     public void givenIndiaCensusData_WithWrongFileType_ShouldThrowException() {
         try {
@@ -55,10 +55,10 @@ public class StateCensusAnalyserTest {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
         }
     }
-    /**
-     * given indian census file is correct but Delimeter wrong should return custom exception....
-     * @throws CensusAnalyserException
-     */
+
+//     given indian census file is correct but Delimeter wrong should return custom exception....
+//      @throws CensusAnalyserException
+
     @Test
     public void givenIndianCensusCSVFile_WhenCorrectButDelimiterWrong_ShouldThrowException() throws CensusAnalyserException {
         try {
@@ -71,10 +71,10 @@ public class StateCensusAnalyserTest {
         }
     }
 
-    /**
-     * when csv file is correct but csv header is incorrect return throw exception
-     * @throws CensusAnalyserException
-     */
+
+//      when csv file is correct but csv header is incorrect return throw exception
+//     @throws CensusAnalyserException
+
     @Test
     public void givenIndianCensusCSVFile_WhenCorrectButCSVHeaderIncorrect_ShouldThrowException() throws CensusAnalyserException {
         try {
@@ -87,6 +87,77 @@ public class StateCensusAnalyserTest {
         }
     }
 
+     //with the file indian state code csv file returns correct records..
+
+    @Test
+    public void givenIndianStateCodeCSVFileReturnsCorrectRecords() {
+        try {
+            StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
+            int numOfRecords = stateCensusAnalyser.loadStateCodeCensusData("test/resources/IndiaStateCode.csv");
+            Assert.assertEquals(37, numOfRecords);
+        } catch (CensusAnalyserException e) {
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
+        }
+    }
+
+
+    //  given india state code info with wrong file path should throw exception
+
+    @Test
+    public void givenStateCodeInformation_WithWrongFilePath_ShouldThrowException() {
+        try {
+            StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(CensusAnalyserException.class);
+            stateCensusAnalyser.loadStateCodeCensusData("./src/main/java/resources/IndiaStateCode.csv");
+        } catch (CensusAnalyserException e) {
+
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
+        }
+    }
+
+
+     //indian state code with wrong file type..
+
+    @Test
+    public void givenStateCodeInformation_WithWrongFileType_ShouldThrowException() {
+        try {
+            StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(CensusAnalyserException.class);
+            stateCensusAnalyser.loadStateCodeCensusData("test/resources/IndiaStateCode.txt");
+        } catch (CensusAnalyserException e) {
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
+        }
+    }
+
+    // indian state code with wrong delemeter .....
+
+    @Test
+    public void givenStateCodeCSVFile_WhenCorrectButDelimiterWrong_ShouldThrowException()  {
+        try {
+            StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(CensusAnalyserException.class);
+            stateCensusAnalyser.loadStateCodeCensusData(STATE_CODE_CSV_WITH_WRONG_DELIMITER);
+        } catch (CensusAnalyserException x) {
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, x.type);
+        }
+    }
+
+     // when csv file is correct but csv header is incorrect return throw exception...
+
+    @Test
+    public void givenStateCodeCSVFile_WhenCorrectButCSVHeaderIncorrect_ShouldThrowException()  {
+        try {
+            StateCensusAnalyzer stateCensusAnalyser = new StateCensusAnalyzer();
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(CensusAnalyserException.class);
+            stateCensusAnalyser.loadStateCodeCensusData(STATE_CODE_CSV_WITH_WRONG_DELIMITER);
+        } catch (CensusAnalyserException x) {
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, x.type);
+        }
+    }
 
 }
 
