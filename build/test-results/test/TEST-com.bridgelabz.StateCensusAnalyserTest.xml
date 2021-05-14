@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bridgelabz.StateCensusAnalyserTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-05-14T20:12:27" hostname="ABHIJEET" time="0.401">
+  <properties/>
+  <testcase name="givenIndianCensusCSVFileReturnsCorrectRecords()" classname="com.bridgelabz.StateCensusAnalyserTest" time="0.3"/>
+  <testcase name="givenIndianCensusCSVFile_WhenCorrectButDelimiterWrong_ShouldThrowException()" classname="com.bridgelabz.StateCensusAnalyserTest" time="0.017"/>
+  <testcase name="givenIndiaCensusData_WithWrongFileType_ShouldThrowException()" classname="com.bridgelabz.StateCensusAnalyserTest" time="0.002"/>
+  <testcase name="givenIndiaCensusData_WithWrongFile_ShouldThrowException()" classname="com.bridgelabz.StateCensusAnalyserTest" time="0.074"/>
+  <testcase name="givenIndianCensusCSVFile_WhenCorrectButCSVHeaderIncorrect_ShouldThrowException()" classname="com.bridgelabz.StateCensusAnalyserTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
